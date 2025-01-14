@@ -1,0 +1,90 @@
+.login-background {
+    background: linear-gradient(135deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    height: 100vh;
+    padding-top: 8%;
+    .login-container {
+        margin: 0 auto;
+        width: 30%;
+        height: auto;
+        border-radius: 18px;
+        background-color: #fff;
+        padding: 24px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        .login-content{
+            div {
+                padding: 6px;
+                label {
+                    margin-bottom: 3px;
+                }
+                .btn-primary {
+                    margin-top: 12px;
+                    width: 100%;
+                    height: 40px;
+                    background: linear-gradient(135deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+                    border-radius: 30px;
+                    font-size: 16px;
+                }
+                .btn-primary:hover {
+                    color: rgb(59, 221, 228);
+                    background: linear-gradient(135deg, rgba(34,193,195,1) 30%, rgba(253,187,45,1) 80%);
+                }
+                span {
+                    text-align: center;
+                }
+            }
+            .btn-connect {
+                display: flex;
+                align-items: center;
+                .btn--witch-icon {
+                    display: flex;
+                    align-items: center;
+                    height: 40px;
+                    width: 47%;
+                    border-radius: 6px;
+    
+                    .fa-brands {
+                        font-size: 20px;
+                        padding: 10px;
+                        padding-left: 50px;
+                    }
+                    span {
+                        margin-top: 3px;
+                    }
+                }
+
+                .btn-facebook {
+                    background-color: #0088ff;
+                    color: #fff;
+                }
+                .btn-facebook:hover {
+                    color: #0088ff;
+                    background-color: #ebeaea;
+                }
+
+                .btn-google:hover {
+                    background-color: #f6f3f3;
+                    color: rgb(239, 83, 42);
+                }
+                .btn-google {
+                    margin-left: 10px;
+                    color: #f6f3f3;
+                    background-color: rgb(239, 83, 42);
+                }
+            }
+            .login-text {
+                font-weight: bold;
+                text-align: center;
+                font-size: 24px;
+            }
+            .text-center{
+                font-size: 13px;
+                color: rgb(170, 170, 170);
+
+                span:hover {
+                    cursor: pointer;
+                    color: rgb(239, 83, 42);
+                }
+            } 
+        }
+    }
+}
