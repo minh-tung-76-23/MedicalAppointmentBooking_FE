@@ -9,7 +9,31 @@ import "./Login.scss";
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      username: "",
+      password: "",
+      isShowPassword: false,
+    };
   }
+
+  handleOnChangeUserName = (event) => {
+    this.setState({ username: event.target.value });
+  };
+
+  handleOnChangePassWord = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleLogin = () => {
+    console.log(this.state);
+  };
+
+  handleShowHidePassWord = () => {
+    this.setState({
+      isShowPassword: !this.state.isShowPassword,
+    });
+    console.log(this.state);
+  };
 
   render() {
     //JSX
@@ -24,22 +48,41 @@ class Login extends Component {
                 type="text"
                 className="form-control"
                 placeholder="Enter your Username"
+                value={this.state.username}
+                onChange={(event) => this.handleOnChangeUserName(event)}
               />
             </div>
             <div className="col-12 form-group">
               <label>Password:</label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Enter your Password"
-              />
+              <div className="sel-pass">
+                <input
+                  type={this.state.isShowPassword ? "text" : "password"}
+                  className="form-control"
+                  placeholder="Enter your Password"
+                  onChange={(event) => this.handleOnChangePassWord(event)}
+                />
+                <span
+                  onClick={() => {
+                    this.handleShowHidePassWord();
+                  }}
+                >
+                  <i
+                    className={
+                      this.state.isShowPassword
+                        ? "fa-solid fa-eye"
+                        : "fa-solid fa-eye-slash"
+                    }
+                  ></i>
+                  {/* <i class="fa-solid fa-eye"></i> */}
+                </span>
+              </div>
             </div>
 
             <div className="col-12 form-group">
               <button
                 type="submit"
                 className="btn btn-primary"
-                // onClick={() => this.props.login()}
+                onClick={() => this.handleLogin()}
               >
                 Sign In
               </button>
