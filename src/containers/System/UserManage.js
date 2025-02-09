@@ -3,11 +3,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./userManager.scss";
 import { getAllUsers } from "../../services/userService";
+import ModalUser from "./ModalUser";
 class UserManage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       arrUsers: [],
+      isOpenModal: false,
     };
   }
 
@@ -25,12 +27,33 @@ class UserManage extends Component {
     }
   }
 
+  handleAddNewUser = () => {
+    this.setState({ isOpenModal: true });
+  };
+
+  toggleUserModal = () => {
+    this.setState({ isOpenModal: !this.state.isOpenModal });
+  };
+
   render() {
     let arrUsers = this.state.arrUsers;
     return (
       <div className="user-container">
+        <ModalUser
+          isOpen={this.state.isOpenModal}
+          toggleFromParent={this.toggleUserModal}
+        />
         <div className="title text-center">manage user</div>
-        <div className="user-table mt-4 mx-1">
+        <div className="mx-1">
+          <button
+            className="btn btn-primary mt-2 px-3"
+            onClick={() => this.handleAddNewUser()}
+          >
+            <i class="fa-solid fa-user-plus"></i>
+            <span className="px-2">Add New User</span>
+          </button>
+        </div>
+        <div className="user-table mt-2 mx-1">
           <table id="customers">
             <tr>
               <th scope="col">#</th>
@@ -63,7 +86,7 @@ class UserManage extends Component {
                         justifyContent: "space-evenly",
                       }}
                     >
-                      <button className="btn btn-sm btn-primary px-3">
+                      <button className="btn btn-sm btn-warning px-3">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </button>
                       <button className="btn btn-sm btn-danger px-3 ml-2">
