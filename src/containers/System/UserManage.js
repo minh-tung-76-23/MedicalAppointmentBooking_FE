@@ -2,8 +2,14 @@ import React, { Component } from "react";
 // import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import "./userManager.scss";
-import { getAllUsers, createNewUserService } from "../../services/userService";
+import {
+  getAllUsers,
+  createNewUserService,
+  deleteUserService,
+} from "../../services/userService";
 import ModalUser from "./ModalUser";
+import { emitter } from "../../utils/emitter";
+
 class UserManage extends Component {
   constructor(props) {
     super(props);
@@ -47,8 +53,23 @@ class UserManage extends Component {
       } else {
         await this.getAllUsersFormReact();
         this.setState({ isOpenModal: false });
+        emitter.emit("EVENT_CLEAR_MODAL_DATA");
       }
       console.log("res", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  handleDeleteUser = async (user) => {
+    try {
+      let res = await deleteUserService(user.id);
+      if (res && res.errCode !== 0) {
+        alert(res.message);
+      } else {
+        await this.getAllUsersFormReact();
+        alert("User deleted successfully");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -109,7 +130,10 @@ class UserManage extends Component {
                       <button className="btn btn-sm btn-warning px-3">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </button>
-                      <button className="btn btn-sm btn-danger px-3 ml-2">
+                      <button
+                        className="btn btn-sm btn-danger px-3 ml-2"
+                        onClick={() => this.handleDeleteUser(user)}
+                      >
                         <i class="fa-solid fa-trash"></i>
                       </button>
                     </td>

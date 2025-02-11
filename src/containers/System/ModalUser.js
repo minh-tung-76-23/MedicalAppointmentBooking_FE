@@ -15,6 +15,8 @@ import {
   Form,
   Label,
 } from "reactstrap";
+import { emitter } from "../../utils/emitter";
+
 class ModalUser extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +30,22 @@ class ModalUser extends Component {
       gender: "1",
       roleId: "R1",
     };
+    this.listenToEmitter();
+  }
+
+  listenToEmitter() {
+    emitter.on("EVENT_CLEAR_MODAL_DATA", () => {
+      this.setState({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        address: "",
+        phoneNumber: "",
+        gender: "1",
+        roleId: "R1",
+      });
+    });
   }
 
   componentDidMount() {}
