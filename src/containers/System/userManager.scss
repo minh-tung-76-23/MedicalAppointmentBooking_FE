@@ -38,8 +38,8 @@
     .cut-50 {
       display: flex;
       justify-content: center;
-      .form-group{
-        margin: 0 0 0 10px;
+      .col-md-6:first-child {
+        padding: 0 10px 0 0;
       }
     }
 

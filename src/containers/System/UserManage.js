@@ -6,8 +6,10 @@ import {
   getAllUsers,
   createNewUserService,
   deleteUserService,
+  editUserService,
 } from "../../services/userService";
 import ModalUser from "./ModalUser";
+import ModalEditUser from "./ModalEditUser";
 import { emitter } from "../../utils/emitter";
 
 class UserManage extends Component {
@@ -16,6 +18,8 @@ class UserManage extends Component {
     this.state = {
       arrUsers: [],
       isOpenModal: false,
+      isOpenModalEditUser: false,
+      userEdit: {},
     };
   }
 
@@ -43,6 +47,10 @@ class UserManage extends Component {
 
   toggleUserModal = () => {
     this.setState({ isOpenModal: !this.state.isOpenModal });
+  };
+
+  toggleUserModalEditUser = () => {
+    this.setState({ isOpenModalEditUser: !this.state.isOpenModalEditUser });
   };
 
   createNewUser = async (data) => {
@@ -75,6 +83,26 @@ class UserManage extends Component {
     }
   };
 
+  handleEditUser = (user) => {
+    this.setState({ isOpenModalEditUser: true, userEdit: user });
+    // console.log("res:", user);
+  };
+
+  editUser = async (user) => {
+    try {
+      let response = await editUserService(user);
+      if (response && response.errCode !== 0) {
+        alert(response.message);
+      } else {
+        await this.getAllUsersFormReact();
+        this.setState({ isOpenModalEditUser: false });
+      }
+      // console.log("res", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   render() {
     let arrUsers = this.state.arrUsers;
     return (
@@ -84,6 +112,14 @@ class UserManage extends Component {
           toggleFromParent={this.toggleUserModal}
           createNewUser={this.createNewUser}
         />
+        {this.state.isOpenModalEditUser && (
+          <ModalEditUser
+            isOpen={this.state.isOpenModalEditUser}
+            toggleFromParent={this.toggleUserModalEditUser}
+            currentUser={this.state.userEdit}
+            editUser={this.editUser}
+          />
+        )}
         <div className="title text-center">manage user</div>
         <div className="mx-1">
           <button
@@ -127,7 +163,10 @@ class UserManage extends Component {
                         justifyContent: "space-evenly",
                       }}
                     >
-                      <button className="btn btn-sm btn-warning px-3">
+                      <button
+                        className="btn btn-sm btn-warning px-3"
+                        onClick={() => this.handleEditUser(user)}
+                      >
                         <i class="fa-solid fa-pen-to-square"></i>
                       </button>
                       <button
