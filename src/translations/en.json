@@ -1,4 +1,21 @@
 {
+    "home-header": {
+        "all": "All",
+        "at-home": "At home",
+        "at-the-hospital": "At the hospital",
+        "live-healthy": "Live Healthy",
+        "cooperate": "Cooperate",
+        "appointment": "Appointment",
+        "content": "Quick questions, accurate answers - Easy appointment booking",
+        "sel-hos": "Select hospital",
+        "ques1": "How to make an appointment at the Central Geriatric Hospital",
+        "ques2": "Infertility examination at Tu Du Hospital on which day of the menstrual cycle?",
+        "ques3": "What specialties does Hanoi Medical University Hospital have?",
+        "ques4": "What documents do I need to bring to register for an examination at Cho Ray Hospital?",
+        "ques5": "What documents do I need to prepare for insurance examination at Tu Du Hospital?",
+        "ques6":"About Gia Dinh People's Hospital"
+    },
+
     "common": {
         "add": "Add",
         "edit": "Edit",

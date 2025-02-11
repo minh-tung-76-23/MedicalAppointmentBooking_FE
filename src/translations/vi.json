@@ -1,4 +1,22 @@
 {
+    "home-header": {
+        "all": "Tất cả",
+        "at-home": "Tại nhà",
+        "at-the-hospital": "Tại viện",
+        "live-healthy": "Sống khỏe",
+        "cooperate": "Hợp tác",
+        "appointment": "Lịch hẹn",
+        "content": "Hỏi nhanh, đáp chuẩn - Đặt khám dễ dàng",
+        "sel-hos": "Chọn bệnh viện",
+        "ques1": "Cách đặt khám tại phòng khám Chỉnh hình, Bệnh viện Chợ Rẫy",
+        "ques2": "Cách đặt khám tại Khoa Xương và Điều trị ngoại trú, Bệnh viện Hữu nghị Việt Đức",
+        "ques3": "Bệnh viện Đại học Y Hà Nội có những chuyên khoa gì?",
+        "ques4": "Đăng ký khám tại Bệnh viện Chợ Rẫy cần mang theo giấy tờ gì?",
+        "ques5": "Khám bảo hiểm tại Bệnh viện Từ Dũ cần chuẩn bị giấy tờ gì?",
+        "ques6":"Giới thiệu về Bệnh viện Nhân dân Gia Định"
+
+    },
+
     "common": {
         "add": "Thêm",
         "edit": "Sửa",
