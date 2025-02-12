@@ -1,3 +1,4 @@
+import { languages } from "../../utils/constant";
 import actionTypes from "../actions/actionTypes";
 
 const initContentOfConfirmModal = {
@@ -22,6 +23,12 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 started: true,
+            };
+        case actionTypes.CHANGE_LANGUAGE:
+            // console.log(" changing language check:", action);
+            return {
+                ...state,
+                language: action.language,
             };
         case actionTypes.SET_CONTENT_OF_CONFIRM_MODAL:
             return {

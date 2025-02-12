@@ -2,10 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./HomeHeader.scss";
 import { FormattedMessage } from "react-intl";
+import { languages } from "../../utils/constant";
+import { changeLangueApp } from "../../store/actions/appActions";
 
 class Header extends Component {
+    changeLangue = (language) => {
+        this.props.changeLanguage(language);
+    };
     render() {
-        console.log("check progs", this.props);
+        let language = this.props.language;
+        console.log(language);
         return (
             <React.Fragment>
                 <div className="home-header-container">
@@ -17,7 +23,7 @@ class Header extends Component {
                             <div className="header-logo"></div>
                         </div>
 
-                        <div className="flex center-content">
+                        <div className="flex center-content justify-center">
                             <div className="flex items-center space-x-4 ml-8">
                                 <a className="bg-yellow-500 text-white px-4 py-2 rounded-full">
                                     <FormattedMessage id="home-header.all" />
@@ -45,7 +51,7 @@ class Header extends Component {
                             </div>
                         </div>
 
-                        <div className="right-content flex items-center space-x-4 ml-auto">
+                        <div className="right-content flex items-center justify-center space-x-4 ml-auto">
                             <div className="flex flex-col items-center item-hover">
                                 <i className="fas fa-handshake text-blue-400 text-2xl"></i>
                                 <span className="text-blue-400">
@@ -59,8 +65,30 @@ class Header extends Component {
                                 </span>
                             </div>
                             <div className="flex items-center change-langue">
-                                <span class="language-vi">VI</span>
-                                <span class="language-en">EN</span>
+                                <span
+                                    onClick={() =>
+                                        this.changeLangue(languages.VI)
+                                    }
+                                    className={
+                                        language === languages.VI
+                                            ? "language-vi active"
+                                            : "language-vi"
+                                    }
+                                >
+                                    VI
+                                </span>
+                                <span
+                                    onClick={() =>
+                                        this.changeLangue(languages.EN)
+                                    }
+                                    className={
+                                        language === languages.EN
+                                            ? "language-en active"
+                                            : "language-en"
+                                    }
+                                >
+                                    EN
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -139,12 +167,14 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        langue: state.app.language,
+        language: state.app.language,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        changeLanguage: (language) => dispatch(changeLangueApp(language)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

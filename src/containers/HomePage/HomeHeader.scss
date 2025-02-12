@@ -2,7 +2,7 @@
     height: 85px;
     width: 100%;
     .home-header-content {
-        padding-left: 135px;
+        padding-left: 25px;
         background-color: #edfffa;
         width: 100%;
         height: 100%;
@@ -46,7 +46,7 @@
         }
 
         .right-content{
-            width: 25%;
+            width: 28%;
             font-size: 17px;
             .item-hover:hover  {
                 cursor: pointer;
@@ -61,6 +61,7 @@
                     padding: 0 2px;
                     font-size: 13px;
                     font-weight: bold;
+                    color: #cfcfcf;
                 }
 
                 span:hover {
@@ -71,17 +72,19 @@
                 .language-vi {
                     &.active {
                         color: #fe7139;
+                        cursor: context-menu;
                     }
                 }
                 .language-en {
                     &.active {
                         color: #0086c3;
+                        cursor: context-menu;
                     }
                 }
                 .language-en::before {
                     content: "|";
                     margin: 0 4px; /* Khoảng cách giữa dấu gạch và văn bản */
-                    color: #000;  /* Màu sắc của dấu gạch */
+                    color: #817d7d;  /* Màu sắc của dấu gạch */
                   }
 
                 
