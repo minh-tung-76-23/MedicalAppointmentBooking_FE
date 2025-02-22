@@ -16,6 +16,45 @@
         "ques6":"About Gia Dinh People's Hospital"
     },
 
+    "comprehensive-service" : {
+        "comprehensive-ser": "Comprehensive Service",
+        "specialist-examination": "Specialist examination",
+        "remote-examination": "Remote examination",
+        "general-examination": "General examination",
+        "medical-test": "Medical test",
+        "mental-health": "Mental health",
+        "dental-checkup": "Dental checkup",
+        "surgery-package": "Surgery Package",
+        "healthy-living-diabetes":"Healthy Living Diabetes",
+        "health-test":"Health Test",
+        "healthcare-near-you":"Healthcare near you"
+    },
+
+    "home-footer": {
+        "content-media": "Media talk about BookingCare",
+        "bc-tech": "BookingCare Technology Joint Stock Company",
+        "address": "Lot B4/D21, Cau Giay New Urban Area, Dich Vong Hau Ward, Cau Giay District, Hanoi City, Vietnam",
+        "business-registration": "Business Registration No. 0106790291. Issued by Hanoi Department of Planning and Investment on March 16, 2015",
+        "hotline": "024-7301-2468 (7am - 6pm)",
+        "email": "support@bookingcare.vn (7am - 6pm)",
+        "office": "Office in Ho Chi Minh City",
+        "add-off":"H3 Building, 384 Hoang Dieu, Ward 6, District 4, HCMC",
+        "li1":"Contact for cooperation",
+        "li2":"Digital Transformation",
+        "li3":"Privacy Policy",
+        "li4":"Operating regulations",
+        "li5":"Recruitment",
+        "li6":"Terms of Use",
+        "li7":"Frequently Asked Questions",
+        "li8":"Corporate Health",
+        "partner": "Content Sponsorship Partner",
+        "sponsor": "Sponsor the 'mental health' content section",
+        "sponsor1": "Sponsoring the 'specialized medical' content category",
+        "sponsor2": "Sponsor the 'general health' content category",
+        "contact": "Contact details",
+        "name-contact" : "Bui Minh Tung"
+    },
+
     "common": {
         "add": "Add",
         "edit": "Edit",

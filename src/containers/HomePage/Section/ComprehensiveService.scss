@@ -1,0 +1,26 @@
+.comprehensive-service {
+    padding-bottom: 10px;
+    .img-service {
+        background: url(../../../assets/images/ic_background_grid_item.b108f491.png) center no-repeat;
+        padding: 16px;
+        min-width: 400px;
+        height: auto;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    .img-service:hover span {
+        color: #1e40af; /* Màu xanh dương (#1e40af), thay đổi theo ý muốn */
+    }
+
+    @media (min-width: 768px) {
+        padding: 24px;
+        min-width: 300px;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 32px;
+        min-width: 350px;
+    }
+    
+}

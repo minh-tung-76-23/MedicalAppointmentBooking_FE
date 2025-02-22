@@ -17,6 +17,45 @@
 
     },
 
+    "comprehensive-service" : {
+        "comprehensive-ser": "Dịch vụ toàn diện",
+        "specialist-examination": "Khám chuyên khoa",
+        "remote-examination": "Khám từ xa",
+        "general-examination": "Khám tổng quát",
+        "medical-test": "Xét nghiệm y học",
+        "mental-health": "Sức khỏe tinh thần",
+        "dental-checkup": "Khám nha khoa",
+        "surgery-package": "Gói phẫu thuật",
+        "healthy-living-diabetes":"Sống khỏe tiểu đường",
+        "health-test":"Bài test sức khỏe",
+        "healthcare-near-you":"Y tế gần bạn"
+    },
+
+    "home-footer": {
+        "content-media": "Truyền thông nói gì về BookingCare",
+        "bc-tech": "Công ty Cổ phần Công nghệ BookingCare",
+        "address": "Lô B4/D21, Khu đô thị mới Cầu Giấy, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Thành phố Hà Nội, Việt Nam",
+        "business-registration": "ĐKKD số. 0106790291. Sở KHĐT Hà Nội cấp ngày 16/03/2015",
+        "hotline": "024-7301-2468 (7h - 18h)",
+        "email": "support@bookingcare.vn (7h - 18h)",
+        "office": "Văn phòng tại TP Hồ Chí Minh",
+        "add-off":"Tòa nhà H3, 384 Hoàng Diệu, Phường 6, Quận 4, TP.HCM",
+        "li1":"Liên hệ hợp tác",
+        "li2":"Chuyển đổi số",
+        "li3":"Chính sách bảo mật",
+        "li4":"Quy chế hoạt động",
+        "li5":"Tuyển dụng",
+        "li6":"Điều khoản sử dụng",
+        "li7":"Câu hỏi thường gặp",
+        "li8":"Sức khỏe doanh nghiệp",
+        "partner": "Đối tác bảo trợ nội dung",
+        "sponsor": "Bảo trợ chuyên mục nội dung 'sức khỏe tinh thần'",
+        "sponsor1": "Bảo trợ chuyên mục nội dung 'y khoa chuyên sâu'",
+        "sponsor2": "Bảo trợ chuyên mục nội dung 'sức khỏe tổng quát'",
+        "contact": "Thông tin chi tiết liên hệ",
+        "name-contact" : "Bùi Minh Tùng"
+    },
+
     "common": {
         "add": "Thêm",
         "edit": "Sửa",

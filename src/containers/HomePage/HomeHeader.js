@@ -92,68 +92,67 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-
-                    <div className="home-header-banner">
-                        <div className="home-header-banner container mx-auto p-4">
-                            <h1 className="text-center font-bold text-black mb-4">
-                                <FormattedMessage id="home-header.content" />
-                            </h1>
-                            <div className="bg-white rounded-lg shadow p-4 flex items-center mb-6">
-                                <input
-                                    type="text"
-                                    placeholder="Đặt câu hỏi với Trợ lý AI Bệnh viện top đầu"
-                                    className="flex-grow p-2 text-gray-500 outline-none"
-                                />
-                                <div className="flex items-center ml-4">
-                                    <i className="fas fa-home text-gray-500 mr-2"></i>
-                                    <span className="text-gray-500">
-                                        <FormattedMessage id="home-header.sel-hos" />
-                                    </span>
-                                </div>
-                                <button className="ml-4">
-                                    <i className="fas fa-paper-plane text-gray-500"></i>
-                                </button>
+                </div>
+                <div className="home-header-banner">
+                    <div className="home-header-banner container mx-auto p-4">
+                        <h1 className="text-center font-bold text-black mb-4">
+                            <FormattedMessage id="home-header.content" />
+                        </h1>
+                        <div className="bg-white rounded-lg shadow p-4 flex items-center mb-6">
+                            <input
+                                type="text"
+                                placeholder="Đặt câu hỏi với Trợ lý AI Bệnh viện top đầu"
+                                className="flex-grow p-2 text-gray-500 outline-none"
+                            />
+                            <div className="flex items-center ml-4">
+                                <i className="fas fa-home text-gray-500 mr-2"></i>
+                                <span className="text-gray-500">
+                                    <FormattedMessage id="home-header.sel-hos" />
+                                </span>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
-                                <div className="bg-blue-300 p-4 rounded-lg">
-                                    <div className="flex justify-between items-center border-b border-white py-2">
-                                        <span>
-                                            <FormattedMessage id="home-header.ques1" />
-                                        </span>
-                                        <span>+</span>
-                                    </div>
-                                    <div className="flex justify-between items-center border-b border-white py-2">
-                                        <span>
-                                            <FormattedMessage id="home-header.ques2" />
-                                        </span>
-                                        <span>+</span>
-                                    </div>
-                                    <div className="flex justify-between items-center border-b border-white py-2">
-                                        <span>
-                                            <FormattedMessage id="home-header.ques3" />
-                                        </span>
-                                        <span>+</span>
-                                    </div>
+                            <button className="ml-4">
+                                <i className="fas fa-paper-plane text-gray-500"></i>
+                            </button>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
+                            <div className="bg-blue-300 p-4 rounded-lg">
+                                <div className="flex justify-between items-center border-b border-white py-2">
+                                    <span>
+                                        <FormattedMessage id="home-header.ques1" />
+                                    </span>
+                                    <span>+</span>
                                 </div>
-                                <div className="bg-blue-300 p-4 rounded-lg">
-                                    <div className="flex justify-between items-center border-b border-white py-2">
-                                        <span>
-                                            <FormattedMessage id="home-header.ques4" />
-                                        </span>
-                                        <span>+</span>
-                                    </div>
-                                    <div className="flex justify-between items-center border-b border-white py-2">
-                                        <span>
-                                            <FormattedMessage id="home-header.ques5" />
-                                        </span>
-                                        <span>+</span>
-                                    </div>
-                                    <div className="flex justify-between items-center border-b border-white py-2">
-                                        <span>
-                                            <FormattedMessage id="home-header.ques6" />
-                                        </span>
-                                        <span>+</span>
-                                    </div>
+                                <div className="flex justify-between items-center border-b border-white py-2">
+                                    <span>
+                                        <FormattedMessage id="home-header.ques2" />
+                                    </span>
+                                    <span>+</span>
+                                </div>
+                                <div className="flex justify-between items-center border-b border-white py-2">
+                                    <span>
+                                        <FormattedMessage id="home-header.ques3" />
+                                    </span>
+                                    <span>+</span>
+                                </div>
+                            </div>
+                            <div className="bg-blue-300 p-4 rounded-lg">
+                                <div className="flex justify-between items-center border-b border-white py-2">
+                                    <span>
+                                        <FormattedMessage id="home-header.ques4" />
+                                    </span>
+                                    <span>+</span>
+                                </div>
+                                <div className="flex justify-between items-center border-b border-white py-2">
+                                    <span>
+                                        <FormattedMessage id="home-header.ques5" />
+                                    </span>
+                                    <span>+</span>
+                                </div>
+                                <div className="flex justify-between items-center border-b border-white py-2">
+                                    <span>
+                                        <FormattedMessage id="home-header.ques6" />
+                                    </span>
+                                    <span>+</span>
                                 </div>
                             </div>
                         </div>
