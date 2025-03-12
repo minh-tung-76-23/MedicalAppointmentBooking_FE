@@ -20,4 +20,36 @@
             font-size: $base-size + 1px;
         }
     }
+
+    .change-langue {
+        margin-left: 30px;
+        span {
+            padding: 0 2px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #cfcfcf;
+        }
+
+        span:hover {
+            cursor: pointer;
+            color: #27ff56;
+        }
+
+        .language-vi,
+        .language-en {
+            &.active {
+                color: #fe7139;
+                cursor: context-menu;
+            }
+        }
+
+        .language-en::before {
+            content: "|";
+            margin: 0 4px; /* Khoảng cách giữa dấu gạch và văn bản */
+            color: #817d7d;  /* Màu sắc của dấu gạch */
+          }
+
+        
+          
+    }
 }

@@ -13,5 +13,8 @@
 
     .contact-information {
        background-color: #64b9e5;
+       div > a {
+            transition: all 0.5s ease; 
+       }
     }
 }

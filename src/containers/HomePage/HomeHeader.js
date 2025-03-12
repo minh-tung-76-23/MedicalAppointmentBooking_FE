@@ -93,9 +93,9 @@ class Header extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="home-header-banner">
-                    <div className="home-header-banner container mx-auto p-4">
-                        <h1 className="text-center font-bold text-black mb-4">
+                <div className="home-header-banner flex items-center justify-center h-screen">
+                    <div className="home-header-banner-content container mx-auto p-4">
+                        <h1 className="text-center font-bold text-black mb-20 mx-20">
                             <FormattedMessage id="home-header.content" />
                         </h1>
                         <div className="bg-white rounded-lg shadow p-4 flex items-center mb-6">

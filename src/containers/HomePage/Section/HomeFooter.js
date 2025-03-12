@@ -122,7 +122,7 @@ class HomeFooter extends Component {
                                 <img
                                     src="./images/093706-hellodoctorlogo.png"
                                     alt="Hello Doctor logo"
-                                    className="w-12 h-12 mr-4"
+                                    className="w-12 h-12 mr-4 mb-3"
                                 />
                                 <div>
                                     <h3 className="font-bold text-xl">
@@ -137,7 +137,7 @@ class HomeFooter extends Component {
                                 <img
                                     src="./images/082316-logo-bernard.png"
                                     alt="Bernard Healthcare logo"
-                                    className="w-12 h-12 mr-4"
+                                    className="w-12 h-12 mr-4 mb-3"
                                 />
                                 <div>
                                     <h3 className="font-bold text-xl">
@@ -153,7 +153,7 @@ class HomeFooter extends Component {
                                 <img
                                     src="./images/064252-doctor-check-2.png"
                                     alt="Doctor Check logo"
-                                    className="w-12 h-12 mr-4"
+                                    className="w-12 h-12 mr-4 mb-3"
                                 />
                                 <div>
                                     <h3 className="font-bold text-xl">
