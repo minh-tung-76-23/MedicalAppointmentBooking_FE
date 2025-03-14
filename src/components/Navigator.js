@@ -60,7 +60,7 @@ class Menu extends Component {
 class SubMenu extends Component {
 
     getItemClass = path => {
-        return this.props.location.pathname === path ? "active" : "";
+        return this.props.location.pathname === path ? "active" : " ";
     };
 
     render() {

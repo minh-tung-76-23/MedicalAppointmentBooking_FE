@@ -6,14 +6,15 @@ import Navigator from "../../components/Navigator";
 import { adminMenu } from "./menuApp";
 import "./Header.scss";
 import { languages } from "../../utils/constant";
+import { FormattedMessage } from "react-intl";
+
 // import { changeLangueApp } from "../../store/actions/appActions";
 class Header extends Component {
     changeLangue = (language) => {
         this.props.changeLanguage(language);
     };
     render() {
-        const { processLogout } = this.props;
-        let language = this.props.language;
+        const { processLogout, language, userInfo } = this.props;
         return (
             <div className="header-container ">
                 {/* thanh navigator */}
@@ -23,6 +24,16 @@ class Header extends Component {
                 <div className="flex items-center">
                     {/* thanh language */}
                     <div className="flex items-center change-langue mr-8">
+                        <p className="welcome">
+                            {" "}
+                            <FormattedMessage id="menu.system.welcome" />,{" "}
+                            {userInfo && userInfo.firstName && userInfo.lastName
+                                ? userInfo.firstName +
+                                  " " +
+                                  userInfo.lastName +
+                                  " !"
+                                : " "}
+                        </p>
                         <span
                             onClick={() => this.changeLangue(languages.VI)}
                             className={
@@ -62,6 +73,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
         language: state.app.language,
     };
 };
