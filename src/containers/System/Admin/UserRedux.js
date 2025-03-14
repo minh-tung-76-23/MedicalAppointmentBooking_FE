@@ -1,21 +1,30 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { getAllCodeService } from "../../../services/userService";
+// import { getAllCodeService } from "../../../services/userService";
 import { languages } from "../../../utils";
 import * as actions from "../../../store/actions";
+import "./UserRedux.scss";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 class UserRedux extends Component {
     constructor(props) {
         super(props);
         this.state = {
             genderArr: [],
+            positionArr: [],
+            roleArr: [],
+            previewImgUrl: "",
+            isOpen: false,
         };
     }
 
     async componentDidMount() {
-        // console.log(this.props.getGenderStart());
+        // console.log(this.props.getRoleStart);
         this.props.getGenderStart();
+        this.props.getPositionStart();
+        this.props.getRoleStart();
         // this.props.dispatch(actions.fetchGenderStart());
         // try {
         //     let res = await getAllCodeService("gender");
@@ -36,13 +45,48 @@ class UserRedux extends Component {
                 genderArr: this.props.genderRedux,
             });
         }
+        if (prevProps.positionRedux !== this.props.positionRedux) {
+            this.setState({
+                positionArr: this.props.positionRedux,
+            });
+        }
+        if (prevProps.roleRedux !== this.props.roleRedux) {
+            this.setState({
+                roleArr: this.props.roleRedux,
+            });
+        }
     }
+
+    handleOnchangeImage = (event) => {
+        let data = event.target.files;
+        let file = data[0];
+        console.log(file);
+        if (file) {
+            let objUrl = URL.createObjectURL(file);
+            this.setState({
+                previewImgUrl: objUrl,
+            });
+        }
+    };
+
+    delUrlImg = (event) => {
+        this.setState({
+            previewImgUrl: "",
+        });
+    };
+
+    openImg = () => {
+        if (!this.state.previewImgUrl) return;
+        this.setState({ isOpen: true });
+    };
 
     render() {
         // console.log("check state", this.state);
         let genders = this.state.genderArr;
+        let positions = this.state.positionArr;
+        let roles = this.state.roleArr;
         let language = this.props.language;
-        console.log("Check gender redu:", this.props.genderRedux);
+        let isLoadingGender = this.props.isLoadingGender;
         return (
             <div className="user-redux-container">
                 <div className="text-center title">User Redux</div>;
@@ -52,6 +96,11 @@ class UserRedux extends Component {
                             <h4>
                                 <FormattedMessage id="crud-redux.add" />
                             </h4>
+                            <div>
+                                {isLoadingGender === true
+                                    ? "loading-genders"
+                                    : ""}
+                            </div>
                             <form className="row g-3">
                                 <div className="col-md-6">
                                     <label
@@ -168,9 +217,21 @@ class UserRedux extends Component {
                                         <FormattedMessage id="crud-redux.role" />
                                     </label>
                                     <select id="roleId" className="form-select">
-                                        <option value="R1">Admin</option>
-                                        <option value="R2">Doctor</option>
-                                        <option value="R3">Patient</option>
+                                        {roles &&
+                                            roles.length > 0 &&
+                                            roles.map((item, index) => {
+                                                return (
+                                                    <option
+                                                        key={index}
+                                                        value={item.id}
+                                                    >
+                                                        {language ===
+                                                        languages.VI
+                                                            ? item.valueVi
+                                                            : item.valueEn}
+                                                    </option>
+                                                );
+                                            })}
                                     </select>
                                 </div>
                                 <div className="col-md-3">
@@ -181,23 +242,56 @@ class UserRedux extends Component {
                                         <FormattedMessage id="crud-redux.position" />
                                     </label>
                                     <select id="roleId" className="form-select">
-                                        <option value="Admin">Admin</option>
-                                        <option value="R2">Doctor</option>
-                                        <option value="R3">Patient</option>
+                                        {positions &&
+                                            positions.length > 0 &&
+                                            positions.map((item, index) => {
+                                                return (
+                                                    <option
+                                                        key={index}
+                                                        value={item.id}
+                                                    >
+                                                        {language ===
+                                                        languages.VI
+                                                            ? item.valueVi
+                                                            : item.valueEn}
+                                                    </option>
+                                                );
+                                            })}
                                     </select>
                                 </div>
-                                <div className="col-md-3">
-                                    <label
-                                        htmlFor="inputImage4"
-                                        className="form-label"
-                                    >
-                                        <FormattedMessage id="crud-redux.image" />
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="inputImage4"
-                                    />
+                                <div
+                                    className="col-md-3 sel-img"
+                                    onChange={(event) =>
+                                        this.handleOnchangeImage(event)
+                                    }
+                                >
+                                    <div>
+                                        <label
+                                            htmlFor="inputImage4"
+                                            className="form-label"
+                                        >
+                                            <FormattedMessage id="crud-redux.image" />
+                                        </label>
+                                        <input
+                                            type="file"
+                                            className="form-control"
+                                            id="inputImage4"
+                                            onClick={(event) =>
+                                                this.delUrlImg(event)
+                                            }
+                                        />
+                                    </div>
+                                    <div
+                                        className={`preview-img mx-auto ${
+                                            this.state.previewImgUrl
+                                                ? ""
+                                                : "hidden"
+                                        }`}
+                                        style={{
+                                            backgroundImage: `url(${this.state.previewImgUrl})`,
+                                        }}
+                                        onClick={() => this.openImg()}
+                                    ></div>
                                 </div>
                                 <div className="col-12">
                                     <button
@@ -211,6 +305,12 @@ class UserRedux extends Component {
                         </div>
                     </div>
                 </div>
+                {this.state.isOpen === true && (
+                    <Lightbox
+                        mainSrc={this.state.previewImgUrl}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                    />
+                )}
             </div>
         );
     }
@@ -220,12 +320,17 @@ const mapStateToProps = (state) => {
     return {
         language: state.app.language,
         genderRedux: state.admin.gender,
+        positionRedux: state.admin.position,
+        roleRedux: state.admin.roles,
+        isLoadingGender: state.admin.isLoadingGender,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getGenderStart: () => dispatch(actions.fetchGenderStart()),
+        getPositionStart: () => dispatch(actions.fetchPositionStart()),
+        getRoleStart: () => dispatch(actions.fetchRoleStart()),
         // changeLanguage: (language) =>
         //     dispatch(actions.changeLangueApp(language)),
     };

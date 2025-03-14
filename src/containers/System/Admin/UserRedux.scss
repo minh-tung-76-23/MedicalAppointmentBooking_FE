@@ -1,0 +1,13 @@
+.sel-img {
+    .preview-img {
+        margin-top: 10px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 60%;
+        height: 200px;
+        object-fit: cover;
+        background: center no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+}
