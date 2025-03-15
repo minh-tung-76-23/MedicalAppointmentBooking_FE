@@ -1,9 +1,11 @@
 import {
     getAllCodeService,
     createNewUserService,
+    getAllUsers,
+    deleteUserService,
 } from "../../services/userService";
 import actionTypes from "./actionTypes";
-
+import { ToastContainer, toast } from "react-toastify";
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START,
 // });
@@ -19,11 +21,11 @@ export const fetchGenderStart = () => {
                 dispatch(fetchGenderSuccess(res.data));
             } else {
                 dispatch(fetchGenderFail());
-                console.log("get gender failed: " + res.errMsg);
+                toast.warning(res.message);
             }
         } catch (error) {
             fetchGenderFail();
-            console.log("check error: " + error);
+            toast.error(error);
         }
     };
 };
@@ -48,11 +50,11 @@ export const fetchPositionStart = () => {
                 dispatch(fetchPositionSuccess(res.data));
             } else {
                 dispatch(fetchPositionFail());
-                console.log("get position failed: " + res.errMsg);
+                toast.warning(res.message);
             }
         } catch (error) {
             fetchPositionFail();
-            console.log("check error: " + error);
+            toast.error(error);
         }
     };
 };
@@ -77,11 +79,11 @@ export const fetchRoleStart = () => {
                 dispatch(fetchRoleSuccess(res.data));
             } else {
                 dispatch(fetchRoleFail());
-                console.log("get role failed: " + res.errMsg);
+                toast.warning(res.message);
             }
         } catch (error) {
             fetchRoleFail();
-            console.log("check error: " + error);
+            toast.error(error);
         }
     };
 };
@@ -101,14 +103,16 @@ export const createNewUser = (data) => {
             let res = await createNewUserService(data);
             console.log("check value ", res);
             if (res && res.errCode === 0) {
+                toast.success("User created successfully!");
                 dispatch(createNewUserSuccess());
+                dispatch(fetchAllUserStart());
             } else {
                 dispatch(createNewUserFailed());
-                console.log("get role failed: " + res.errMsg);
+                toast.warning(res.message);
             }
         } catch (error) {
             createNewUserFailed();
-            console.log("check error: " + error);
+            toast.warning(error);
         }
     };
 };
@@ -118,4 +122,58 @@ export const createNewUserSuccess = () => ({
 });
 export const createNewUserFailed = () => ({
     type: actionTypes.CREATE_USER_FAIL,
+});
+
+export const fetchAllUserStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllUsers("All");
+            if (res && res.errCode === 0) {
+                dispatch(fetchAllUserSuccess(res.users.reverse()));
+                // console.log("get user success: ", res.users);
+            } else {
+                dispatch(fetchAllUserFail());
+                toast.warning(res.message);
+            }
+        } catch (error) {
+            fetchAllUserFail();
+            toast.warning(error);
+        }
+    };
+};
+
+export const fetchAllUserSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_USER_SUCCESS,
+    users: data,
+});
+
+export const fetchAllUserFail = () => ({
+    type: actionTypes.FETCH_ALL_USER_FAIL,
+});
+
+export const deleteUser = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await deleteUserService(data);
+            // console.log("check value ", res);
+            if (res && res.errCode === 0) {
+                toast.success("User deleted successfully");
+                dispatch(deleteUserSuccess());
+                dispatch(fetchAllUserStart());
+            } else {
+                dispatch(deleteUserFailed());
+                toast.warning(res.message);
+            }
+        } catch (error) {
+            deleteUserFailed();
+            toast.warning(error);
+        }
+    };
+};
+
+export const deleteUserSuccess = () => ({
+    type: actionTypes.DELETE_USER_SUCCESS,
+});
+export const deleteUserFailed = () => ({
+    type: actionTypes.DELETE_USER_FAIL,
 });

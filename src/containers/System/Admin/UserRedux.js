@@ -7,6 +7,8 @@ import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import TableManage from "./TableManage";
+import { ToastContainer, toast } from "react-toastify";
 
 class UserRedux extends Component {
     constructor(props) {
@@ -76,6 +78,21 @@ class UserRedux extends Component {
                 role: arrRole && arrRole.length > 0 ? arrRole[0].key : "",
             });
         }
+
+        if (prevProps.usersList !== this.props.usersList) {
+            this.setState({
+                email: "",
+                password: "",
+                firstName: "",
+                lastName: "",
+                phoneNumber: "",
+                address: "",
+                gender: "",
+                position: "",
+                role: "",
+                avatar: "",
+            });
+        }
     }
 
     handleOnchangeImage = (event) => {
@@ -139,7 +156,7 @@ class UserRedux extends Component {
         for (let i = 0; i < arrCheck.length; i++) {
             if (!this.state[arrCheck[i]]) {
                 isValid = false;
-                alert("this input required " + arrCheck[i]);
+                toast.error("This input required: " + arrCheck[i]);
                 break;
             }
         }
@@ -434,13 +451,15 @@ class UserRedux extends Component {
                                 <div className="col-12">
                                     <button
                                         type="button"
-                                        className="btn btn-primary px-4"
+                                        className="btn btn-primary px-4 my-3"
                                         onClick={() => this.handleSaveUser()}
                                     >
                                         <FormattedMessage id="crud-redux.submit" />
                                     </button>
                                 </div>
                             </form>
+
+                            <TableManage />
                         </div>
                     </div>
                 </div>
@@ -462,6 +481,7 @@ const mapStateToProps = (state) => {
         positionRedux: state.admin.position,
         roleRedux: state.admin.roles,
         isLoadingGender: state.admin.isLoadingGender,
+        usersList: state.admin.users,
     };
 };
 
@@ -471,6 +491,8 @@ const mapDispatchToProps = (dispatch) => {
         getPositionStart: () => dispatch(actions.fetchPositionStart()),
         getRoleStart: () => dispatch(actions.fetchRoleStart()),
         createNewUser: (data) => dispatch(actions.createNewUser(data)),
+        fetchAllUserStart: () => dispatch(actions.fetchAllUserStart()),
+
         // changeLanguage: (language) =>
         //     dispatch(actions.changeLangueApp(language)),
     };

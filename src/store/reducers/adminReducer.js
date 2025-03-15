@@ -7,6 +7,7 @@ const initialState = {
     gender: [],
     roles: [],
     position: [],
+    users: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -14,12 +15,10 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_GENDER_START:
             let copyState = { ...state };
             copyState.isLoadingGender = true;
-            console.log("Check fetch gender start:", action);
             return {
                 ...copyState,
             };
         case actionTypes.FETCH_GENDER_SUCCESS:
-            console.log("Check fetch gender success:", action);
             state.gender = action.data;
             state.isLoadingGender = false;
             return {
@@ -29,13 +28,12 @@ const adminReducer = (state = initialState, action) => {
             state.gender = [];
             state.isLoadingGender = false;
 
-            console.log("Check fetch gender failed:", action);
+            // console.log("Check fetch gender failed:", action);
 
             return {
                 ...state,
             };
         case actionTypes.FETCH_POSITION_SUCCESS:
-            console.log("Check fetch position success:", action);
             state.position = action.data;
             state.isLoadingPositions = false;
             return {
@@ -45,13 +43,10 @@ const adminReducer = (state = initialState, action) => {
             state.position = [];
             state.isLoadingPositions = false;
 
-            console.log("Check fetch position failed:", action);
-
             return {
                 ...state,
             };
         case actionTypes.FETCH_ROLE_SUCCESS:
-            console.log("Check fetch role success:", action);
             state.roles = action.data;
             state.isLoadingRoles = false;
             return {
@@ -61,7 +56,19 @@ const adminReducer = (state = initialState, action) => {
             state.roles = [];
             state.isLoadingRoles = false;
 
-            console.log("Check fetch role failed:", action);
+            return {
+                ...state,
+            };
+
+        case actionTypes.FETCH_ALL_USER_SUCCESS:
+            state.users = action.users;
+
+            return {
+                ...state,
+            };
+
+        case actionTypes.FETCH_ALL_USER_FAIL:
+            state.users = [];
 
             return {
                 ...state,
